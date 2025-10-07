@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: The Ivory Shore</title>
+    <link rel="stylesheet" href="../Styles/chapter.css">
+
+</head>
+<body>
+
+    <button id="theme-toggle" class="theme-switcher">Switch Theme</button>
+
+    <main class="book-chapter">
+        <header class="chapter-header">
+            <p class="chapter-number">Chapter 1</p>
+            <h1 class="chapter-title">The Ivory Shore</h1>
+        </header>
+
+        <article class="chapter-content">
+            <p>The transition is never gentle. One moment, I was aware of the weight of my blanket, the scent of rain on the windowpane; the next, there was only the taste of salt and the sound of a tideless sea. I stood on a beach not of sand, but of compacted bone dust, bleached white under a sky the color of a faded bruise. This was the Ivory Shore, the very edge of the Penumbra. I had arrived.</p>
+            
+            <p>Before me, the Somnolent Ocean stretched into an infinite grey haze. There were no waves, only a slow, oily swell that lapped at the shore with a sound like sleeping breath. The air was thick, heavy, carrying with it the faint, disconnected whispers of a billion dreaming minds. It is a chorus one never grows accustomed to. To the novice traveler, it is maddening; to the veteran, it is merely the background radiation of the place.</p>
+
+            <h2>First Steps in a New Reality</h2>
+            
+            <p>Walking here is like wading through memory. The ground yields slightly underfoot, each step leaving a shimmering, momentary after-image. I have learned not to look back, for the path you have walked often has its own ideas about where you should go next. My task was simple: to follow the shoreline until I reached the Estuary of Lost Things, a place where forgotten objects from the waking world wash ashore. My client, a woman in London, had lost a locket of sentimental value. She believed it was stolen. I knew it had simply been forgotten with enough force to slip through the cracks of reality.</p>
+
+            <p>The Shore is rarely empty. Vague, humanoid shapes made of sea foam and regret drifted at the ocean's edge—the Anamnesis. They are harmless, drawn to the echoes of potent memories as moths to a flame. They paid me no mind, their attention fixed on the shimmering motes of light that represented particularly vivid dreams bubbling up from the deep. I gave them a wide berth all the same. Harmless does not mean safe.</p>
+        </article>
+
+        <nav class="chapter-nav">
+            <a href="index.html">&laquo; Back to Author Page</a>
+            <a href="#">Chapter 2 &raquo;</a>
+        </nav>
+    </main>
+
+    <!-- 4. JAVASCRIPT FOR THEME SWITCHING -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        function setTheme(theme) {
+            htmlElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                setTheme(prefersDark ? 'dark' : 'light');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeTheme);
+    </script>
+
+</body>
+</html>
