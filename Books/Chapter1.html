@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 1: The Ivory Shore</title>
-    <link rel="stylesheet" href="../Styles/chapter.css">
-
+    <link rel="stylesheet" href="../Resources/chapter.css">
 </head>
 <body>
-
     <button id="theme-toggle" class="theme-switcher">Switch Theme</button>
 
     <main class="book-chapter">
@@ -30,40 +28,10 @@
         </article>
 
         <nav class="chapter-nav">
-            <a href="index.html">&laquo; Back to Author Page</a>
+            <a href="../index.html">&laquo; Back to Author Page</a>
             <a href="#">Chapter 2 &raquo;</a>
         </nav>
     </main>
-
-    <!-- 4. JAVASCRIPT FOR THEME SWITCHING -->
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement;
-
-        function setTheme(theme) {
-            htmlElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            themeToggle.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
-        }
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setTheme(newTheme);
-        });
-
-        function initializeTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                setTheme(savedTheme);
-            } else {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                setTheme(prefersDark ? 'dark' : 'light');
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', initializeTheme);
-    </script>
-
+    <script src="../Resources/chapterScript.js"></script>
 </body>
 </html>
